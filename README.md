@@ -80,7 +80,5 @@ Selenium 3:❌ Not available	Selenium 4 :✅ Built-in Chrome DevTools support
 ⦁	Stable Functionality: When the application features are stable and not changing frequently.
 ⦁	High-Risk Areas: When bugs in certain areas can cause major issues or losses (like payments, login, etc.).
 ⦁	Cross-Browser Testing:  When you need to test the app in multiple browsers (Chrome, Firefox, Edge).
-⦁	
-⦁	
 
       
