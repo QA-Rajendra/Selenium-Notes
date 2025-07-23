@@ -235,67 +235,158 @@ This content is open for personal learning, training, and academic purposes.
 
 This document explains the class and interface structure of Selenium WebDriver in Java using a top-down approach.
 
+# 📘 Selenium WebDriver: Class & Interface Hierarchy (Java)
+
+This document explains the **Selenium WebDriver class and interface hierarchy** using a **top-down approach**. It includes interface definitions, concrete class implementations, supporting interfaces, and practical Java examples.
+
 ---
 
 ## 🧩 1. `SearchContext` Interface
 
-### ✅ Methods:
-
-findElement(By by);
-findElements(By by);
-
+### ✅ Core Methods:
+```java
+WebElement findElement(By by);
+List<WebElement> findElements(By by);
 📖 Description:
 🔹 It is the top-most parent interface in Selenium.
-🔹 All element lookups begin from here.
-💡 Example:
-WebElement element = driver.findElement(By.id("email"));
 
+🔹 All element search operations (findElement, findElements) start from here.
+
+💡 Example:
+java
+Copy
+Edit
+WebElement element = driver.findElement(By.id("email"));
 🧩 2. WebDriver Interface (extends SearchContext)
 ✅ Key Abstract Methods:
-get(String url);
-close();
-quit();
-getWindowHandle();
-
+java
+Copy
+Edit
+void get(String url);
+void close();
+void quit();
+String getWindowHandle();
 🔄 Nested Interfaces:
-🪟 Window
-🧭 Navigation
-⏱️ Timeouts
+🪟 Window – Manage window size, position
+
+🧭 Navigation – Back, forward, refresh
+
+⏱️ Timeouts – Manage timeouts for loading, finding, and scripts
 
 📖 Description:
-🔸 Defines browser-level interaction methods like:
-Opening a URL
-Closing the tab or browser
-Switching between windows, etc.
+🔸 Declares methods for browser-level interaction, such as:
+
+Navigating to a URL
+
+Managing tabs/windows
+
+Closing and quitting browser
 
 💡 Example:
+java
+Copy
+Edit
 driver.get("https://example.com");
 driver.close();
-
 🧩 3. RemoteWebDriver Class (Implements WebDriver)
 📖 Description:
-🧱 A fully implemented class that connects with browsers either:
+🧱 A fully implemented class in Selenium that bridges your test code with a browser.
 
-🔌 Locally
+Can be used for:
 
-🌐 Remotely (via Selenium Grid)
+🔌 Local execution
+
+🌐 Remote execution via Selenium Grid
 
 💡 Example:
-WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444"), capabilities);
+java
+Copy
+Edit
+WebDriver driver = new RemoteWebDriver(
+    new URL("http://localhost:4444"),
+    new ChromeOptions()
+);
 🧩 4. Supporting Interfaces
 🔹 JavascriptExecutor (Interface)
-💬 Used to run JavaScript code in the browser context.
+📖 Executes custom JavaScript code in the browser context.
 
 💡 Example:
+java
+Copy
+Edit
 JavascriptExecutor js = (JavascriptExecutor) driver;
 js.executeScript("alert('Hello World');");
 🔹 TakesScreenshot (Interface)
-📸 Used to take a screenshot of the current browser screen.
+📖 Captures a screenshot of the current screen or page.
 
 💡 Example:
+java
+Copy
+Edit
 File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-🧩 5. Browser-Specific Drivers (Extend RemoteWebDriver)
-Each browser has its own driver class for platform-specific execution:
+🧩 5. Browser-Specific Driver Classes (Extend RemoteWebDriver)
+Each supported browser has its own driver class that extends RemoteWebDriver.
+
+🌐 Browser	💻 Java Example
+Chrome	WebDriver driver = new ChromeDriver();
+Firefox	WebDriver driver = new FirefoxDriver();
+Internet Explorer	WebDriver driver = new InternetExplorerDriver();
+Opera	WebDriver driver = new OperaDriver();
+Safari	WebDriver driver = new SafariDriver();
+
+🧭 Hierarchy Summary (Text Diagram)
+text
+Copy
+Edit
+SearchContext (Interface)
+    └── WebDriver (Interface)
+         ├── Abstract Methods: get(), close(), quit(), etc.
+         ├── Nested Interfaces:
+         │     ├── Navigation
+         │     ├── Window
+         │     └── Timeouts
+         └── RemoteWebDriver (Concrete Class)
+              ├── Implements:
+              │     ├── JavascriptExecutor
+              │     ├── TakesScreenshot
+              │     ├── HasCapabilities
+              │     ├── PrintsPage
+              │     └── HasVirtualAuthenticator
+              └── Extended by:
+                   ├── ChromeDriver
+                   ├── FirefoxDriver
+                   ├── InternetExplorerDriver
+                   ├── OperaDriver
+                   └── SafariDriver
+✅ Real-World Selenium Test Flow (Example)
+java
+Copy
+Edit
+// 🚀 Step 1: Launch Chrome
+WebDriver driver = new ChromeDriver();
+
+// 🌐 Step 2: Open a website
+driver.get("https://example.com");
+
+// 🔍 Step 3: Find an input element
+WebElement searchBox = driver.findElement(By.name("q"));
+
+// ⌨️ Step 4: Enter text
+searchBox.sendKeys("Selenium WebDriver");
+
+// ❌ Step 5: Close the browser
+driver.quit();
+📌 Key Takeaways
+SearchContext is the root interface for element searching.
+
+WebDriver defines core browser control APIs.
+
+RemoteWebDriver is the main implementation used behind the scenes.
+
+Browser-specific drivers (like ChromeDriver) extend RemoteWebDriver.
+
+Supporting interfaces like JavascriptExecutor and TakesScreenshot provide additional capabilities.
+
 
 🌐 Browser	💻 Code Example
 🟡 ChromeDriver	WebDriver driver = new ChromeDriver();
