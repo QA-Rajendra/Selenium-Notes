@@ -131,14 +131,6 @@ It supports multiple programming languages like **Java, Python, C#, JavaScript, 
 - Used JavaScript for automation  
 - No longer maintained or used
 
----
-
-## 📘 Recommended Add-ons
-
-- **ExtentReports** – For rich HTML reporting  
-- **Allure Reports** – Interactive report generation  
-- **WebDriverManager** – Auto-download browser drivers  
-- **Docker + Selenium Grid** – For distributed testing
 
 ---
 
