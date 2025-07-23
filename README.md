@@ -230,9 +230,12 @@ This content is open for personal learning, training, and academic purposes.
 
 ****<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/6d3fca45-5d71-4654-bd1a-c3c8b279fb54" />
 
-### 📘 Selenium WebDriver Architecture (Java)
+
+# 📘 Selenium WebDriver Architecture (Java)
 
 This document explains the class and interface structure of Selenium WebDriver in Java using a top-down approach.
+
+---
 
 ## 🧩 1. `SearchContext` Interface
 
@@ -240,63 +243,68 @@ This document explains the class and interface structure of Selenium WebDriver i
 
 findElement(By by);
 findElements(By by);
-📖 Description:
-It is the top-most parent interface in Selenium. Every element lookup starts here.
 
-🗣 Example:
+📖 Description:
+🔹 It is the top-most parent interface in Selenium.
+🔹 All element lookups begin from here.
+💡 Example:
 WebElement element = driver.findElement(By.id("email"));
+
 🧩 2. WebDriver Interface (extends SearchContext)
 ✅ Key Abstract Methods:
-
 get(String url);
 close();
 quit();
 getWindowHandle();
-✅ Nested Interfaces:
-Window
-Navigation
-Timeouts
+
+🔄 Nested Interfaces:
+🪟 Window
+🧭 Navigation
+⏱️ Timeouts
 
 📖 Description:
-Defines browser-level interaction methods like opening a website, closing a tab, switching windows, etc.
+🔸 Defines browser-level interaction methods like:
+Opening a URL
+Closing the tab or browser
+Switching between windows, etc.
 
-🗣 Example:
-
+💡 Example:
 driver.get("https://example.com");
 driver.close();
+
 🧩 3. RemoteWebDriver Class (Implements WebDriver)
 📖 Description:
-Fully implemented class that connects with real browsers (locally or remotely via Selenium Grid).
+🧱 A fully implemented class that connects with browsers either:
 
-🗣 Example:
+🔌 Locally
 
+🌐 Remotely (via Selenium Grid)
+
+💡 Example:
 WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444"), capabilities);
 🧩 4. Supporting Interfaces
 🔹 JavascriptExecutor (Interface)
-Allows execution of JavaScript code in the browser context.
+💬 Used to run JavaScript code in the browser context.
 
-🗣 Example:
-
+💡 Example:
 JavascriptExecutor js = (JavascriptExecutor) driver;
 js.executeScript("alert('Hello World');");
 🔹 TakesScreenshot (Interface)
-Used to take a screenshot of the current page.
+📸 Used to take a screenshot of the current browser screen.
 
-🗣 Example:
-
+💡 Example:
 File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 🧩 5. Browser-Specific Drivers (Extend RemoteWebDriver)
-Each browser has its own driver class:
+Each browser has its own driver class for platform-specific execution:
 
-Driver	Code Example
-ChromeDriver	WebDriver driver = new ChromeDriver();
-FirefoxDriver	WebDriver driver = new FirefoxDriver();
-InternetExplorerDriver	WebDriver driver = new InternetExplorerDriver();
-OperaDriver	WebDriver driver = new OperaDriver();
-SafariDriver	WebDriver driver = new SafariDriver();
+🌐 Browser	💻 Code Example
+🟡 ChromeDriver	WebDriver driver = new ChromeDriver();
+🟠 FirefoxDriver	WebDriver driver = new FirefoxDriver();
+🔵 InternetExplorerDriver	WebDriver driver = new InternetExplorerDriver();
+🟣 OperaDriver	WebDriver driver = new OperaDriver();
+🟢 SafariDriver	WebDriver driver = new SafariDriver();
 
 📌 Summary Diagram Structure
-
 SearchContext (Interface)
    |
    |---> WebDriver (Interface)
@@ -311,13 +319,10 @@ SearchContext (Interface)
                                      - IEDriver
                                      - OperaDriver
                                      - SafariDriver
-✅ Real-world Flow Example
-
-WebDriver driver = new ChromeDriver();         // Step 1: Launch Chrome
-driver.get("https://example.com");             // Step 2: Navigate to a website
-WebElement searchBox = driver.findElement(By.name("q")); // Step 3: Find Element
-searchBox.sendKeys("Selenium WebDriver");      // Step 4: Interact with Element
-driver.quit();                                 // Step 5: Close browser
-
-
+✅ Real-World Flow Example
+WebDriver driver = new ChromeDriver();              // 🚀 Step 1: Launch Chrome
+driver.get("https://example.com");                  // 🌐 Step 2: Navigate to a website
+WebElement searchBox = driver.findElement(By.name("q")); // 🔍 Step 3: Find Element
+searchBox.sendKeys("Selenium WebDriver");           // ⌨️ Step 4: Interact with Element
+driver.quit();                                      // ❌ Step 5: Close browser
 
