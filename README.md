@@ -230,23 +230,28 @@ This content is open for personal learning, training, and academic purposes.
 
 ****<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/6d3fca45-5d71-4654-bd1a-c3c8b279fb54" />
 
-📘 Selenium WebDriver Architecture (Java)
+# 📘 Selenium WebDriver Architecture (Java)
+
 This document explains the class and interface structure of Selenium WebDriver in Java using a top-down approach.
 
-🧭 Overview Diagram
+---
 
-🧩 1. SearchContext Interface
-✅ Methods:
-java
-Copy
-Edit
+## 🧭 Overview Diagram
+
+![Selenium Architecture](./A_flowchart_in_the_image_depicts_the_architecture_.png)
+
+---
+
+## 🧩 1. `SearchContext` Interface
+
+### ✅ Methods:
+```java
 findElement(By by);
 findElements(By by);
 📖 Description:
 It is the top-most parent interface in Selenium. Every element lookup starts here.
 
 🗣 Example:
-
 java
 Copy
 Edit
@@ -271,7 +276,6 @@ Timeouts
 Defines browser-level interaction methods like opening a website, closing a tab, switching windows, etc.
 
 🗣 Example:
-
 java
 Copy
 Edit
@@ -282,7 +286,6 @@ driver.close();
 Fully implemented class that connects with real browsers (locally or remotely via Selenium Grid).
 
 🗣 Example:
-
 java
 Copy
 Edit
@@ -292,7 +295,6 @@ WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444"), capabil
 Allows execution of JavaScript code in the browser context.
 
 🗣 Example:
-
 java
 Copy
 Edit
@@ -302,7 +304,6 @@ js.executeScript("alert('Hello World');");
 Used to take a screenshot of the current page.
 
 🗣 Example:
-
 java
 Copy
 Edit
@@ -344,7 +345,6 @@ driver.get("https://example.com");             // Step 2: Navigate to a website
 WebElement searchBox = driver.findElement(By.name("q")); // Step 3: Find Element
 searchBox.sendKeys("Selenium WebDriver");      // Step 4: Interact with Element
 driver.quit();                                 // Step 5: Close browser
-
 
 
 
