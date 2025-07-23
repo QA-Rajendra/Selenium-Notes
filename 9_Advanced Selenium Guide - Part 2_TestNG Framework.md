@@ -1,77 +1,56 @@
-Advanced Selenium Guide - Part 2
-✅ 14) TestNG Framework
-TestNG (Test Next Generation) is an open-source testing framework inspired by JUnit, offering enhanced functionalities for robust test case management.
-🔍 What is TestNG?
-TestNG is a Java-based framework designed to streamline test automation with powerful annotations, grouping, sequencing, and configuration features.
+# TestNG and Automation Framework Guide
 
-🧠 Tip: Use TestNG for structured, scalable test suites with built-in reporting capabilities.
+## 🔍 What is TestNG?
 
-🌟 Features & Benefits of TestNG
+TestNG is a Java-based testing framework that simplifies automation with features like annotations, test sequencing, grouping, and built-in reporting.
 
+> 🧠 **Tip:** Use TestNG for structured, scalable test suites with easy reporting.
 
+---
 
-Feature
-Description
+## 🌟 Features & Benefits of TestNG
+   🔧 Feature | 📄 Description |
+ |-----------|----------------|
+ | ✅ **Annotations** | Lifecycle methods like `@Test`, `@BeforeSuite`, `@AfterMethod` |
+ | 🔄 **Grouping** | Organize and run related tests together |
+ | ⏱ **Parallel Execution** | Run tests concurrently to save time |
+ | 📊 **Data Provider** | Pass dynamic test data using `@DataProvider` |
+ | 📈 **Reports** | Auto-generates HTML/XML reports after execution |
+ | 🔗 **Dependency** | Define test method execution dependencies |
 
+---
 
+## 🔽 How to Download and Install TestNG?
 
-✅ Annotations
-Lifecycle annotations like @Test, @BeforeSuite, @AfterMethod
+### 🖥️ In Eclipse:
+1. Go to `Help → Eclipse Marketplace`
+2. Search for **TestNG**
+3. Click **Install** and restart Eclipse
 
+### 📦 Using Maven:
 
-🔄 Grouping
-Organize and run related tests using groups
-
-
-⏱ Parallel Execution
-Execute multiple tests simultaneously to reduce runtime
-
-
-📊 Data Provider
-Supply dynamic test data to methods
-
-
-📈 Reports
-Generate HTML/XML reports automatically
-
-
-🔗 Dependency
-Define dependencies between test methods
-
-
-🔽 How to Download and Install TestNG?
-
-Open Eclipse:
-
-Navigate to Help → Eclipse Marketplace
-Search for TestNG, click Install
-Restart Eclipse
-
-
-Using Maven:
+```xml
 <dependency>
     <groupId>org.testng</groupId>
     <artifactId>testng</artifactId>
     <version>7.8.0</version>
     <scope>test</scope>
 </dependency>
-
-
-
-
-🧠 Tip: Maven simplifies dependency management and ensures consistent TestNG versions across projects.
+🧠 Tip: Maven ensures consistent TestNG versions across teams/projects.
 
 🧩 Key Annotations in TestNG
-@BeforeSuite   // Runs before all tests in the suite  
-@BeforeClass   // Runs before the first method of the current class  
-@BeforeMethod  // Runs before each @Test method  
-@Test          // Marks a method as a test case  
-@AfterMethod   // Runs after each @Test  
-@AfterClass    // Runs after all methods in the class  
-@AfterSuite    // Runs after all tests in the suite
-
+Copy
+@BeforeSuite    // Before all tests in the suite
+@BeforeClass    // Before the first method of the class
+@BeforeMethod   // Before every @Test
+@Test           // Actual test case
+@AfterMethod    // After every @Test
+@AfterClass     // After all methods in the class
+@AfterSuite     // After all tests in the suite
 🧪 How to Run a Test Suite in TestNG?
-Create a testng.xml file to organize tests:
+Create testng.xml:
+
+Copy
 <suite name="MySuite">
   <test name="MyTests">
     <classes>
@@ -80,161 +59,100 @@ Create a testng.xml file to organize tests:
     </classes>
   </test>
 </suite>
+Run via:
 
-Run using:
-
-Eclipse: Right-click testng.xml → Run As → TestNG Suite
-Maven or CI pipeline integration
-
+Eclipse: Right-click on testng.xml → Run As → TestNG Suite
+CI tools like Jenkins
+Maven CLI
 🎯 Other Key Concepts
-
 Groups in TestNG:
+Copy
 @Test(groups = {"smoke", "regression"})
-
-
-Depends On in TestNG:
+Depends On:
+Copy
 @Test
 public void login() {}
 
 @Test(dependsOnMethods = {"login"})
 public void verifyDashboard() {}
-
-
-Test Case Sequencing:
+Test Case Priority:
+Copy
 @Test(priority = 1)
 public void startTest() {}
-
-
 TestNG Reports:
+After execution, reports are generated in:
 
-Generated under /test-output/index.html after execution.
-
-
-Parameters in TestNG:
+Copy
+/test-output/index.html
+Parameters:
+Copy
 @Parameters("browser")
 public void setup(String browser) {
     // Launch browser dynamically
 }
-
-
-Multi-browser & Parallel Testing:
+Parallel Testing Setup:
+Copy
 <suite name="ParallelTests" parallel="tests" thread-count="2">
-
-
-
-🧠 Interview Questions – TestNG
-
+🧠 TestNG Interview Questions
 What are TestNG annotations and their execution order?
 How do you perform parallel testing using TestNG?
 How do you group test cases in TestNG?
 How do you create and execute a test suite in TestNG?
-
-✅ 15) Automation Framework
-An Automation Framework is a structured set of rules, tools, and libraries designed to create, manage, and execute automated tests efficiently.
 💡 What is an Automation Framework?
-A reusable structure that promotes consistent, efficient test automation across projects.
+A reusable structure of tools and standards that helps in writing reliable, maintainable, and scalable test automation scripts.
 
-🧠 Tip: A well-designed framework reduces maintenance overhead and improves scalability.
+🧠 Tip: A well-designed framework reduces maintenance overhead and boosts productivity.
 
 ✅ Features of a Good Automation Framework
+📌 Feature	📘 Description
+📁 Structured Folders	Separate folders for tests, reports, data, logs
+🔄 Reusable Components	Shared functions, helpers, utilities
+📈 Rich Reporting	Detailed reports (TestNG, Allure, Extent)
+🧪 Integration with TestNG	Easily plug into JUnit/TestNG
+⚙️ CI/CD Compatibility	Jenkins, GitHub Actions, Azure Pipelines etc.
+📈 Benefits of Frameworks
+Benefit	🔍 Description
+🔁 Reusability	Reuse code across modules
+⏱ Scalability	Handles growing test suites easily
+🔍 Maintainability	Modular design simplifies updates
+🧪 Reliability	Reduces manual errors
+📊 Reporting	Auto-generates test result reports
+🔄 Types of Automation Frameworks
+🛠 Type	📋 Description
+🔢 Data Driven	Uses Excel/CSV/DB for input data
+📚 Keyword Driven	External keywords map to actions
+🔄 Hybrid	Combines multiple frameworks (data + keyword + POM)
+📐 Modular	Scripts broken into independent, reusable pieces
+📦 POM (Page Object Model)	Each page has a separate class with elements + actions
+💡 POM (Page Object Model) Design Pattern
+OOP-based model where each web page is represented by a class containing:
 
-📁 Structured folder design (tests, data, reports)
-🔄 Reusable functions and methods
-📈 Comprehensive test reports and logs
-🧪 Seamless integration with TestNG/JUnit
-⚙️ CI/CD pipeline compatibility
-
-📈 Benefits of Using Frameworks
-
-
-
-Benefit
-🔍 Description
-
-
-
-🔁 Reusability
-Reuse functions across modules
-
-
-⏱ Scalability
-Handle growing test suites with ease
-
-
-🔍 Maintainability
-Modular design simplifies debugging
-
-
-🧪 Reliability
-Reduces manual errors
-
-
-📊 Reporting
-Generates detailed reports (TestNG, Allure)
-
-
-🔄 Types of Automation Framework
-
-
-
-Type
-Description
-
-
-
-🔢 Data Driven
-Separates test logic and data (Excel, CSV, DB)
-
-
-🔄 Hybrid
-Combines data-driven, keyword-driven, or POM approaches
-
-
-📚 Keyword Driven
-Uses external files to define test steps
-
-
-📐 Modular
-Independent, reusable modules
-
-
-📦 POM (Page Object Model)
-Each web page has a dedicated class for elements and actions
-
-
-💡 Page Object Model (POM) Design Pattern
-What is POM?
-An OOP-based design pattern where each web page is represented by a Java class containing:
-
-🎯 WebElements using @FindBy or By locators
-📥 Methods for actions like login, click, etc.
-
-Example (Non-Page Factory):
+🎯 WebElements (using @FindBy or By)
+📥 Methods that perform actions
+🧾 Example (Non-PageFactory):
+Copy
 public class LoginPage {
     WebDriver driver;
-    
+
     By username = By.id("username");
     By password = By.id("password");
     By loginBtn = By.id("login");
 
-    public LoginPage(WebDriver driver){
+    public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void login(String user, String pass){
+    public void login(String user, String pass) {
         driver.findElement(username).sendKeys(user);
         driver.findElement(password).sendKeys(pass);
         driver.findElement(loginBtn).click();
     }
 }
+🧠 Tip: POM increases code readability, reusability, and simplifies maintenance.
 
-
-🧠 Tip: Use POM to enhance code maintainability and reduce duplication in Selenium tests.
-
-📌 Interview Questions – Automation Framework
-
+📌 Automation Framework – Interview Questions
 What are the components of your automation framework?
-What is Page Object Model, and how is it implemented?
-What is the difference between Page Factory and POM?
-How do you handle test data in your framework?
-How do you integrate reports and logging?
+What is Page Object Model and how is it implemented?
+What is the difference between POM and Page Factory?
+How do you manage test data in your framework?
+How do you integrate reporting and logging?
