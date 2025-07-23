@@ -1,14 +1,16 @@
-# Selenium Waits, Alerts & Switch Windows
+# Selenium Waits, Alerts & Switch Windows 🕒🧠🪟
 
 Automation testers often deal with **dynamic content**, **popups**, and **multiple windows/tabs**. Selenium provides various mechanisms like **waits**, **alert handling**, and **window management** to handle these scenarios effectively.
 
+![Selenium Waits Overview](https://miro.medium.com/v2/resize\:fit:1200/format\:webp/1*-N9skmZXegVz9cABOUf5mg.png)
+
 ---
 
-## 1. Selenium Waits
+## 1. Selenium Waits ⏳
 
 Waits in Selenium ensure that WebDriver waits for elements or conditions before proceeding with the next steps. There are 4 main types:
 
-### a) Implicit Wait
+### a) Implicit Wait 🕰️
 
 Automatically applies wait to all elements.
 
@@ -18,7 +20,7 @@ driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 driver.get("https://example.com");
 ```
 
-### b) Explicit Wait (WebDriverWait)
+### b) Explicit Wait (WebDriverWait) 📌
 
 Waits for a specific condition to occur.
 
@@ -28,7 +30,7 @@ WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By
 element.click();
 ```
 
-### c) Fluent Wait
+### c) Fluent Wait 🔁
 
 Allows polling frequency and ignores specific exceptions.
 
@@ -41,20 +43,20 @@ Wait<WebDriver> fluentWait = new FluentWait<>(driver)
 WebElement element = fluentWait.until(driver -> driver.findElement(By.id("dynamicElement")));
 ```
 
-### d) Thread.sleep (Not recommended for automation)
+### d) Thread.sleep 💤 (Not recommended for automation)
 
 ```java
 Thread.sleep(5000); // pauses for 5 seconds
 ```
 
-### e) PageLoadTimeout & SetScriptTimeout
+### e) PageLoadTimeout & SetScriptTimeout 🕸️
 
 ```java
 driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
 driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
 ```
 
-### f) Ajax/JS-Based Element Handling
+### f) Ajax/JS-Based Element Handling ⚡
 
 ```java
 wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading")));
@@ -62,7 +64,7 @@ wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading")));
 
 ---
 
-## 2. Alerts Handling
+## 2. Alerts Handling ⚠️
 
 Selenium provides `Alert` interface for popups:
 
@@ -90,7 +92,7 @@ alert.accept();
 
 ---
 
-## 3. Switching Windows/Tabs/Popups
+## 3. Switching Windows/Tabs/Popups 🪟
 
 ### a) Get Window Handle:
 
@@ -139,7 +141,7 @@ for(String id : allHandles) {
 
 ---
 
-## 4. Java Set Interface (Used in WindowHandles)
+## 4. Java Set Interface 🔁
 
 ### Key Points:
 
@@ -156,7 +158,7 @@ System.out.println(set);
 
 ---
 
-## 5. Interview Questions (with Answers)
+## 5. Interview Questions 🎯
 
 ### Q1: What is the difference between Implicit and Explicit Wait?
 
@@ -192,7 +194,7 @@ System.out.println(set);
 
 ---
 
-## Summary
+## Summary 📝
 
 * Use **WebDriverWait** for efficient wait strategies
 * Use **Alert interface** to handle pop-ups
@@ -206,4 +208,4 @@ System.out.println(set);
 ---
 
 Prepared by: *Your Name*
-Date: 23 July 2025
+Date: 23 July 2025 📅
