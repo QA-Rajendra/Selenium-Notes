@@ -224,34 +224,6 @@ WebDriver driver = new FirefoxDriver();
 // 🔹 Edge
 WebDriver driver = new EdgeDriver();
 
-📌 Important: Always set the driver path using:
-
-java
-Copy
-Edit
-System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
-🎯 6. WebDriver vs WebElement – Interview Insight
-Feature	WebDriver	WebElement
-Type	Interface	Interface
-Controls	The entire browser	Specific elements inside the webpage
-Methods	get(), close(), getTitle()	click(), sendKeys(), getText()
-Example	new ChromeDriver()	findElement(By.id("username"))
-
-❓ Interview Q&A
-A quick set of commonly asked interview questions related to WebDriver & WebElement.
-
-Q1. What is WebDriver?
-A: WebDriver is a Java interface in Selenium used to automate browsers.
-
-Q2. Can we create an object of WebDriver?
-A: No. But we can use a reference of WebDriver with implementing classes.
-✅ Example: WebDriver driver = new ChromeDriver();
-
-Q3. What is the difference between WebDriver and WebElement?
-A: WebDriver automates the entire browser, while WebElement is used to interact with specific elements on a page.
-
-Q4. Why use WebDriver instead of ChromeDriver directly?
-A: Using WebDriver provides abstraction and flexibility, making it easy to switch between browsers without code changes.
 
 ### 📄 License  
 This content is open for personal learning, training, and academic purposes.
