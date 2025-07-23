@@ -230,55 +230,38 @@ This content is open for personal learning, training, and academic purposes.
 
 ****<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/6d3fca45-5d71-4654-bd1a-c3c8b279fb54" />
 
-# 📘 Selenium WebDriver Architecture (Java)
+### 📘 Selenium WebDriver Architecture (Java)
 
 This document explains the class and interface structure of Selenium WebDriver in Java using a top-down approach.
-
----
-
-## 🧭 Overview Diagram
-
-![Selenium Architecture](./A_flowchart_in_the_image_depicts_the_architecture_.png)
-
----
 
 ## 🧩 1. `SearchContext` Interface
 
 ### ✅ Methods:
-```java
+
 findElement(By by);
 findElements(By by);
 📖 Description:
 It is the top-most parent interface in Selenium. Every element lookup starts here.
 
 🗣 Example:
-java
-Copy
-Edit
 WebElement element = driver.findElement(By.id("email"));
 🧩 2. WebDriver Interface (extends SearchContext)
 ✅ Key Abstract Methods:
-java
-Copy
-Edit
+
 get(String url);
 close();
 quit();
 getWindowHandle();
 ✅ Nested Interfaces:
 Window
-
 Navigation
-
 Timeouts
 
 📖 Description:
 Defines browser-level interaction methods like opening a website, closing a tab, switching windows, etc.
 
 🗣 Example:
-java
-Copy
-Edit
+
 driver.get("https://example.com");
 driver.close();
 🧩 3. RemoteWebDriver Class (Implements WebDriver)
@@ -286,27 +269,21 @@ driver.close();
 Fully implemented class that connects with real browsers (locally or remotely via Selenium Grid).
 
 🗣 Example:
-java
-Copy
-Edit
+
 WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444"), capabilities);
 🧩 4. Supporting Interfaces
 🔹 JavascriptExecutor (Interface)
 Allows execution of JavaScript code in the browser context.
 
 🗣 Example:
-java
-Copy
-Edit
+
 JavascriptExecutor js = (JavascriptExecutor) driver;
 js.executeScript("alert('Hello World');");
 🔹 TakesScreenshot (Interface)
 Used to take a screenshot of the current page.
 
 🗣 Example:
-java
-Copy
-Edit
+
 File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 🧩 5. Browser-Specific Drivers (Extend RemoteWebDriver)
 Each browser has its own driver class:
@@ -319,9 +296,7 @@ OperaDriver	WebDriver driver = new OperaDriver();
 SafariDriver	WebDriver driver = new SafariDriver();
 
 📌 Summary Diagram Structure
-lua
-Copy
-Edit
+
 SearchContext (Interface)
    |
    |---> WebDriver (Interface)
@@ -337,9 +312,7 @@ SearchContext (Interface)
                                      - OperaDriver
                                      - SafariDriver
 ✅ Real-world Flow Example
-java
-Copy
-Edit
+
 WebDriver driver = new ChromeDriver();         // Step 1: Launch Chrome
 driver.get("https://example.com");             // Step 2: Navigate to a website
 WebElement searchBox = driver.findElement(By.name("q")); // Step 3: Find Element
