@@ -183,7 +183,7 @@ The `WebElement` interface is used to interact with individual elements on a web
 
 ### ✅ Java Example: Using `WebElement`
 
-```java
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
